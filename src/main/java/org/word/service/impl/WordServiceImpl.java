@@ -175,9 +175,9 @@ public class WordServiceImpl implements WordService {
                 Request request = new Request();
                 request.setName(String.valueOf(param.get("name")));
                 request.setType(param.get("type") == null ? "object" : param.get("type").toString());
-                if (param.get("format") != null) {
-                    request.setType(request.getType() + "(" + param.get("format") + ")");
-                }
+//                if (param.get("format") != null) {
+//                    request.setType(request.getType() + "(" + param.get("format") + ")");
+//                }
                 request.setParamType(String.valueOf(in));
                 // 考虑对象参数类型
                 if (in != null && "body".equals(in)) {
@@ -311,9 +311,9 @@ public class WordServiceImpl implements WordService {
             ModelAttr child = new ModelAttr();
             child.setName(mEntry.getKey());
             child.setType((String) attrInfoMap.get("type"));
-            if (attrInfoMap.get("format") != null) {
-                child.setType(child.getType() + "(" + attrInfoMap.get("format") + ")");
-            }
+//            if (attrInfoMap.get("format") != null) {
+//                child.setType(child.getType() + "(" + attrInfoMap.get("format") + ")");
+//            }
             child.setType(StringUtils.defaultIfBlank(child.getType(), "object"));
 
             Object ref = attrInfoMap.get("$ref");
@@ -327,7 +327,7 @@ public class WordServiceImpl implements WordService {
                 if (refModel != null) {
                     child.setProperties(refModel.getProperties());
                 }
-                child.setType(child.getType() + ":" + clsName);
+                child.setType(child.getType());
             }
             child.setDescription((String) attrInfoMap.get("description"));
             attrList.add(child);
